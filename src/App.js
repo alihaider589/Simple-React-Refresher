@@ -1,24 +1,30 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Test from './test'
+import Event from './eventhandler'
 
 function App() {
+const[OurArray,SetOurArray] =useState( [
+  { id:'1',text:"hello this is text one"},
+  { id:'2',text:"hello this is text two"},
+
+  { id:'3',text:"hello this is text three"},
+
+ ]);
+  
+  const EventHandler = (dummyEvent)=>{
+// SetOurArray(OurArray.concat(dummyEvent))
+ SetOurArray((newArrayVal)=> newArrayVal.concat(dummyEvent))
+
+  } 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+        
+     <h1 >Hello Duck</h1>
+     <Event onEvent={EventHandler}/>
+     <Test test={OurArray} />
     </div>
   );
 }
